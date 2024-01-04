@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Disallow: /add-house
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://alwadi-house
+
+# Sitemaps
+Sitemap: https://alwadi-house/sitemap.xml

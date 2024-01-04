@@ -1,0 +1,14 @@
+post title,
+details,
+status,
+saler,
+image,
+sub-images.
+hous-status,
+created-at,
+category,
+area,
+price,
+type
+
+
