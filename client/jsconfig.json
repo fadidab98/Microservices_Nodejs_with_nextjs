@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+      "baseUrl": "src/",
+      "paths": {
+          "@/*": ["./*"]
+      },
+      "types": ["react", "react-dom", "react-i18next"]
+      
+  }
+}

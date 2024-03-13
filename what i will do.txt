@@ -1,0 +1,19 @@
+User 
+
+1-floor und area (done) / Contact /show all research results (done) (services)
+
+2-bazaar middleware (done) / show main and subimages /chat / contact/ share / add to Favorite/copy link (services/posts/id)
+3-show footer  (about Us)
+
+4-redirect / valiadtion/ auth with google or facebook (login) 
+
+5-redirect / valiadtion/ auth with google or facebook (register) 
+
+6-redirect /validation/ sub-images (add-house)
+
+7-arabic (website)
+
+8-check hows biding (/user/dashboard/posts/1)
+
+
+Admin

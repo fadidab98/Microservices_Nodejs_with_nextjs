@@ -1,0 +1,41 @@
+
+networks:
+  internal_UJJigBWx:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.16.238.0/24
+      driver: default
+services:
+  express:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    depends_on:
+    - sql
+    environment:
+      DB_DATABASE: nodehouseapiuser
+      DB_DIALECT: mysql
+      DB_HOST: localhost
+      DB_PASSWORD: fadi
+      DB_USERNAME: fadi1
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.3
+    ports:
+    - 80:3000/tcp
+  sql:
+    container_name: sql
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: nodehouseapiuser
+      MYSQL_PASSWORD: fadi
+      MYSQL_ROOT_PASSWORD: fadi
+      ALLOW_EMPTY_PASSWORD: yes
+    image: bitnami/mysql:latest
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.2
+version: '3.0'
