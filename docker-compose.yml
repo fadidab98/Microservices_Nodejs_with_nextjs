@@ -1,0 +1,176 @@
+
+networks:
+  internal_UJJigBWx:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.16.238.0/24
+      driver: default
+services:
+  sql:
+    container_name: sql
+    restart: always
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: nodehouseapiuser
+      MYSQL_USER: fadi
+      MYSQL_PASSWORD: fadi
+      MYSQL_ROOT_PASSWORD: fadi
+    image: bitnami/mysql:5.7
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.2
+  
+  sql1:
+    container_name: sql1
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: nodehouseapipost
+      MYSQL_USER: fadi
+      MYSQL_PASSWORD: fadi
+      MYSQL_ROOT_PASSWORD: fadi
+    image: bitnami/mysql:5.7
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.8
+  sql2:
+    container_name: sql2
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE: nodehouseapicategory
+      MYSQL_USER: fadi
+      MYSQL_PASSWORD: fadi
+      MYSQL_ROOT_PASSWORD: fadi
+    image: bitnami/mysql:5.7
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.9
+  sql3:
+    container_name: sql3
+    expose:
+      - 3306
+    environment:
+      MYSQL_DATABASE:  -nodehousecart
+      MYSQL_USER: fadi
+      MYSQL_PASSWORD: fadi
+      MYSQL_ROOT_PASSWORD: fadi
+    image: bitnami/mysql:5.7
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.10
+  customer:
+    build:
+      context: ./customer
+      dockerfile: Dockerfile
+    container_name: customer
+    restart: always
+
+    depends_on:
+     sql:
+      condition: service_healthy
+    environment:
+      DB_DATABASE: nodehouseapiuser
+      DB_DIALECT: mysql
+      DB_HOST: sql
+      DB_PASSWORD: root
+      DB_USERNAME: 
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.3
+    ports:
+    - 9001:9001
+  post:
+    build:
+      context: ./posts
+      dockerfile: Dockerfile
+    container_name: post
+    depends_on:
+     sql1:
+      condition: service_healthy
+    environment:
+      DB_DATABASE: nodehouseapipost
+      DB_DIALECT: mysql
+      DB_HOST: sql
+      DB_PASSWORD: root
+      DB_USERNAME: 
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.4
+    ports:
+    - 9003:9003
+  category:
+    build:
+      context: ./category
+      dockerfile: Dockerfile
+    container_name: category
+
+    depends_on:
+     sql2:
+      condition: service_healthy
+    environment:
+      DB_DATABASE: nodehouseapicategory
+      DB_DIALECT: mysql
+      DB_HOST: sql
+      DB_PASSWORD: root
+      DB_USERNAME: 
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.5
+    ports:
+    - 9002:9002
+  cart:
+    build:
+      context: ./cart
+      dockerfile: Dockerfile
+    container_name: cart
+
+    depends_on:
+     sql3:
+      condition: service_healthy
+    environment:
+      DB_DATABASE: nodehousecart
+      DB_DIALECT: mysql
+      DB_HOST: sql
+      DB_PASSWORD: root
+      DB_USERNAME: 
+    networks:
+      internal_UJJigBWx:
+        ipv4_address: 172.16.238.6
+    ports:
+    - 9004:9004
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+    - 3000:3000
+    environment:
+      - NODE_ENV=production
+ 
+  
+version: '3.0'
+
