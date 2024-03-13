@@ -69,7 +69,11 @@ export const settingApi = createApi({
 });
 
 export const {
+<<<<<<< HEAD
     useGetSettingQuery,
+=======
+    useGetSettingWuery,
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     util: { getRunningQueriesThunk  },
   } = settingApi;
   export const {getSetting}= settingApi.endpoints;

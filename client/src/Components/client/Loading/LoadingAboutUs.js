@@ -2,7 +2,11 @@ import React from 'react'
 
 function LoadingAboutUs() {
   return (
+<<<<<<< HEAD
     <div className='pt-16 animate-pulse '>
+=======
+    <div className='absolute left-0 right-0 top-0 bottom-0 w-full h-full z-20 pt-16 animate-pulse'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     <h1 className='text-white text-4xl text-center mt-10 bg-slate-200 p-4 mx-auto w-20 rounded-md'></h1>
     <div className='max-sm:w-11/12 sm:w-11/12 md:w-11/12 w-3/4 mx-auto  opacity-90  bg-green-950 rounded-lg   drop-shadow-xl text-white mt-10 p-4' >
     <div className='relative max-sm:w-full  sm:w-full  md:w-full  lg:w-96 h-96 rounded-lg float-right max-sm:mx-auto max-sm:mb-4 sm:mx-auto sm:mb-4 md:mx-auto lg:m-4 '>

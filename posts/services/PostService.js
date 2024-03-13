@@ -50,9 +50,14 @@ const PostValidation = require("../validation/PostEnValidation.js");
     const loc = await this.repository.CreateLocation({location})
     return FormData(loc)
   }
+<<<<<<< HEAD
   async getAllPost({limit,offset,type,location,min,max,floor,min_area,max_area}){
     const post= await this.repository.getAllPosts({limit,offset,type,location,min,max,floor,min_area,max_area});
     
+=======
+  async getAllPost({limit,offset,type,location,min,max,rooms,area}){
+    const post= await this.repository.getAllPosts({limit,offset,type,location,min,max,rooms,area});
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     return FormData(post)
 
   }
@@ -61,8 +66,13 @@ const PostValidation = require("../validation/PostEnValidation.js");
     return FormData(locations)
 
   }
+<<<<<<< HEAD
   async PostsCount({type,location,min,max,floor,min_area,max_area}){
     const count= await this.repository.PostsCount({type,location,min,max,floor,min_area,max_area});
+=======
+  async PostsCount({type,location,min,max,rooms,area}){
+    const count= await this.repository.PostsCount({type,location,min,max,rooms,area});
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     return FormData(count)
 
   }

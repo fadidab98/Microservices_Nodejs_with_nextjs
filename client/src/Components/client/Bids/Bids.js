@@ -44,7 +44,10 @@ function Bids(props) {
 
   },[new Date(),timeDifference])
     console.log("time",time)
+<<<<<<< HEAD
     
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   return (
   
   

@@ -10,7 +10,10 @@ import Axios from '@/leb/Axios';
 import Head from 'next/head';
 import { getCheckAuthUser, getRunningQueriesThunk, useGetCheckAuthUser, useGetCheckAuthUserQuery } from '@/Store/User/userApi';
 import { initializeStore } from '@/Store/store';
+<<<<<<< HEAD
 import { io } from 'socket.io-client';
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
 import { useSelector } from 'react-redux';
 
@@ -31,8 +34,13 @@ function Index(props) {
   console.log(location)
   const {data:user}= useGetCheckAuthUserQuery({cookie:props.data})
 
+<<<<<<< HEAD
   const [socket,setSocket]=useState(null)
   console.log("sock :",socket)
+=======
+  const socket =  useSelector(state=>state.setting.setting.socket)
+console.log("sock :",socket)
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   const handelInput =(e)=>{
 
     setInputs({...inputs,[e.target.name]:e.target.value})
@@ -133,11 +141,14 @@ function Index(props) {
  useEffect(()=>{
   console.log(step)
  },[step])
+<<<<<<< HEAD
  useEffect(()=>{
   setSocket(io.connect('http://localhost:5000'));
  
 
 },[])
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   const handlePrev = () => {
     setStep((prevStep) => prevStep - 1);
   };

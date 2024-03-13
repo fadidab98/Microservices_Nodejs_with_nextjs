@@ -8,13 +8,20 @@ import { MdKitchen } from "react-icons/md";
 import { FaCopy } from "react-icons/fa";
 import { io } from 'socket.io-client';
 import { IoMdClose } from "react-icons/io";
+<<<<<<< HEAD
 import Cookies from 'js-cookie'
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { usePostOfferMutation } from '@/Store/User/BazaarApi';
 import { useGetCheckAuthUserQuery } from '@/Store/User/userApi';
+<<<<<<< HEAD
 import { useRouter } from 'next/router';
+=======
+import Cookies from 'js-cookie';
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 export const getStaticPaths=async()=>{
     const store=initializeStore();
     await store.dispatch(getAllPostId.initiate())
@@ -51,9 +58,12 @@ function Index(props) {
     const [bazaar,setBazaar]=useState({})
     const [postOffer,result]=usePostOfferMutation();
     const [modal,setModal]=useState(false);
+<<<<<<< HEAD
     const [auth,setAuth]=useState(0)
     const router = useRouter()
 
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     const cookie = Cookies.get()
     const {data:user}=useGetCheckAuthUserQuery({cookie:cookie})
     console.log("user",user)
@@ -62,6 +72,7 @@ function Index(props) {
        
 
     },[result])
+<<<<<<< HEAD
     useEffect(()=>{
         if(Cookies.get("accessToken")){
             setAuth(1 )
@@ -70,6 +81,9 @@ function Index(props) {
         }
 
     },[auth])
+=======
+
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     useEffect(()=>{
         socket?.on("getBazaar",(data)=>{
             console.log(data)
@@ -86,6 +100,7 @@ function Index(props) {
         setOffer({offer:e.target.value})
       }
       const handleModal =()=>{
+<<<<<<< HEAD
         if(auth==1){
             setModal(!modal)
 
@@ -96,16 +111,27 @@ function Index(props) {
         }
       }
       console.log("bazaar ;",bazaar)
+=======
+        setModal(!modal)
+      }
+      console.log(bazaar)
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
       const submitOffer =(e)=>{
         e.preventDefault();
         postOffer({id:props.data?.id,patch:{userid:user?.data?.id,offer:offer.offer}})
 
       }
+<<<<<<< HEAD
       console.log("bazaar ;",bazaar)
 
   return (
     <Layout>
          <div className='flex flex-col  xl:w-10/12 lg:w-10/12 md:w-full sm:w-full max-sm:w-full p-2 mx-auto pt-24'>
+=======
+  return (
+    <Layout>
+         <div className='flex flex-col w-10/12 p-2 mx-auto pt-24'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
             <h1 className='text-lg font-blod'>{props.data.title}</h1>
             <div className='flex mt-4'>
                 <div className='flex items-center border-2 border-gray-200 text-green-800  p-2 rounded-md shadow-md mx-2'><FaShareSquare className='m-1'/> <span>Share</span></div>
@@ -116,6 +142,7 @@ function Index(props) {
             
             </div>
             
+<<<<<<< HEAD
             <div className='flex flex-wrap mt-10'>
 
                 <div className=' xl:w-8/12 lg:w-8/12 md:w-full sm:w-full max-sm:w-full'>
@@ -123,6 +150,15 @@ function Index(props) {
 
                 </div>
                 <div className=' xl:w-4/12 lg:w-4/12 md:w-full sm:w-full max-sm:w-full px-4'>
+=======
+            <div className='flex mt-10'>
+
+                <div className='w-8/12'>
+                <Gallary mainImage={props.data.image}/>
+
+                </div>
+                <div className='w-4/12 px-4'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
                     
                     <div className='w-full border-w rounded-md shadow-md p-4'>
                         <h2 className='text-xl font-blod text-green-800 px-3'> <span className='px-1'>{props.data.price}</span>sp</h2>
@@ -134,7 +170,11 @@ function Index(props) {
                             Chat
                         </button>
                     </div>
+<<<<<<< HEAD
                     <div className={`w-full border-w rounded-md shadow-md p-4 my-2 ${bazaar?.post==0 ?'':'hidden'}`}>
+=======
+                    <div className={`w-full border-w rounded-md shadow-md p-4 my-2 ${bazaar?.post==1 ?'':'hidden'}`}>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
                         <h2 className='text-center'>Bazaar</h2>
                         <div className='w-full flex justify-between xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col'>
                            <div>
@@ -165,7 +205,11 @@ function Index(props) {
             <h2 className='p-2 font-blod text-lg'>Information :</h2>
 
 
+<<<<<<< HEAD
                 <div className='xl:w-8/12 lg:w-8/12 md:w-full sm:w-full max-sm:w-full border-2 flex flex-wrap justify-center rounded-md p-1'>
+=======
+                <div className='w-8/12 border-2 flex flex-wrap justify-center rounded-md p-1'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
                     <div className='w-36 border-2 border-gay-200 bg-gray-50 rounded-md p-2 m-1 shadow-sm flex items-center justify-center'>
                         <span className='mx-1'>Kitchen :</span>
                         <span>{props.data.detail.kitchen}</span>

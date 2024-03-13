@@ -35,6 +35,7 @@ function Index(props) {
         <FilterBar data={props.data?.locations}/>
         {loading?<div className='mt-24 w-3/4 m-auto flex items-center text-green-600 border-b-2 pb-3'>Loading</div>:<>
        <section className='mt-24 w-3/4 m-auto flex items-center text-green-600 border-b-2 pb-3'>
+<<<<<<< HEAD
             <h2 className='text-2xl'>{results} : </h2> <span className='p-1 pt-2 text-md'> ({props?.data?.data.length>0 ? props?.data?.pagination?.count:0})</span>
           </section>
         <section className='w-3/4  pt-5 m-auto min-h-[21.67vh]'>
@@ -53,6 +54,21 @@ function Index(props) {
           <div className='w-full flex flex-items justify-center'>
             {props?.data?.data.length==0?"": <Pagination data={props.data.pagination}/>
 }
+=======
+            <h2 className='text-2xl'>{results} : </h2> <span className='p-1 pt-2 text-md'> ({props?.data?.data ? props?.data?.data.length:0})</span>
+          </section>
+        <section className='w-3/4  pt-5 m-auto'>
+          <div className='flex flex-col justify-center items-center'>
+         
+         {props.data?.data?.map((post,index)=>{
+          return  <Card data={post} key={index} cookies={props.cookies}/>
+           {/* <Card data={post} key={index}/ >*/}
+         })}
+  
+          </div>
+          <div className='w-full flex flex-items justify-center'>
+          <Pagination data={props.data.pagination}/>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
           </div>
         </section>
       </>}
@@ -71,6 +87,7 @@ export async function getServerSideProps(context){
   let location = parseInt(context.query['location']);
   let type = parseInt(context.query['type']);
   let price = parseInt(context.query['price']);
+<<<<<<< HEAD
   let floor = parseInt(context.query['floor']);
   let area = parseInt(context.query['area']);
 
@@ -80,6 +97,14 @@ export async function getServerSideProps(context){
   await store.dispatch(getAllPosts.initiate({page:page,location:location,type:type,price:price,area:area,floor:floor}))
   await Promise.all(store.dispatch(getRunningQueriesThunk()))
   const {data:data} = await getAllPosts.select({page:page,location:location,type:type,price:price,area:area,floor:floor})(store.getState())
+=======
+  console.log("queries : ",context.query)
+  const store = initializeStore();
+  const cookies = getCookies()
+  await store.dispatch(getAllPosts.initiate({page:page,location:location,type:type,price:price}))
+  await Promise.all(store.dispatch(getRunningQueriesThunk()))
+  const {data:data} = await getAllPosts.select({page:page,location:location,type:type,price:price})(store.getState())
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
   console.log(" data services : ",data)
 

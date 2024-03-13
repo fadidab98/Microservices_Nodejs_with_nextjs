@@ -13,13 +13,20 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useGetBidsQuery, usePostOfferMutation } from '@/Store/User/BazaarApi';
 import { useGetCheckAuthUserQuery } from '@/Store/User/userApi';
+<<<<<<< HEAD
+=======
+import Cookies from 'js-cookie';
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 import { FaCircleUser } from 'react-icons/fa6';
 import Bids from '@/Components/client/Bids/Bids';
 import { parse } from 'cookie';
 import Axios from '@/leb/Axios';
 import { getUserPost, getUserPosts } from '@/Store/User/postApi';
+<<<<<<< HEAD
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router';
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
 
 
@@ -58,8 +65,11 @@ function Index(props) {
     const [socket,setSocket]=useState(null)
     const [offer,setOffer]=useState({})
     const [bazaar,setBazaar]=useState({})
+<<<<<<< HEAD
     const [auth,setAuth]=useState(0)
     const router = useRouter()
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     const [postOffer,result]=usePostOfferMutation();
     const [modal,setModal]=useState(false);
     const {data:user}=useGetCheckAuthUserQuery({cookie:props.cookie})
@@ -71,6 +81,7 @@ function Index(props) {
        
 
     },[result])
+<<<<<<< HEAD
     useEffect(()=>{
         if(Cookies.get("accessToken")){
             setAuth(1 )
@@ -79,6 +90,9 @@ function Index(props) {
         }
 
     },[auth])
+=======
+
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     useEffect(()=>{
         socket?.on("getBazaar",(data)=>{
             console.log(data)
@@ -95,6 +109,7 @@ function Index(props) {
         setOffer({offer:e.target.value})
       }
       const handleModal =()=>{
+<<<<<<< HEAD
         if(auth==1){
             setModal(!modal)
 
@@ -104,6 +119,11 @@ function Index(props) {
         }
       }
       console.log("auth",bids)
+=======
+        setModal(!modal)
+      }
+      console.log(bazaar)
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
       const submitOffer =(e)=>{
         e.preventDefault();
         postOffer({id:props.data?.id,patch:{userid:user?.data?.id,offer:offer.offer}})

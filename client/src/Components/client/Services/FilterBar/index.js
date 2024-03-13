@@ -20,6 +20,7 @@ function Index(props) {
       {value:"2",label:"between 100000000 and 150000000"},
       {value:"3",label:"More than 150000000"},
     ]
+<<<<<<< HEAD
     const areaOptions= [
       {value:"",label:"All"},
       {value:"1",label:"<=50 m²"},
@@ -28,6 +29,9 @@ function Index(props) {
       {value:"4",label:"<= 250 m²"},
       {value:"5",label:"<= 300 m²"},
     ]
+=======
+
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     const typeRef = useRef({})
     const { query } = router;
 
@@ -40,6 +44,7 @@ function Index(props) {
       {value:"0",label:"Sale"},
       {value:"1",label:"Sale2"}
     ]
+<<<<<<< HEAD
     const floorOptions = [
       {value:"",label:"all"},
       {value:"0",label:"Grund Floor"},
@@ -51,6 +56,8 @@ function Index(props) {
       {value:"6",label:"6"},
       {value:"7",label:"7"},
     ]
+=======
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     
     console.log("from filter",options)
       const  handleType=(e)=>{
@@ -125,6 +132,7 @@ function Index(props) {
           });
         }
       }
+<<<<<<< HEAD
       const  handleFloor=(e)=>{
 
         setInputs({...inputs,floor:e.value})
@@ -135,6 +143,18 @@ function Index(props) {
         if(!e.value)
         {
           const { floor, ...restQuery } = query;
+=======
+      const  handleRooms=(e)=>{
+
+        setInputs({...inputs,rooms:e.value})
+        typeRef.current={...inputs,rooms:e.value}
+        console.log("inputs2",typeRef.current)
+
+        setLabels({...labels,rooms:e.label})
+        if(!e.value)
+        {
+          const { rooms, ...restQuery } = query;
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
     // Set the query parameter you want to remove to undefined
          
@@ -145,7 +165,11 @@ function Index(props) {
         }else{
           router.push({
             pathname: router.pathname, // Replace with the desired page URL
+<<<<<<< HEAD
             query:{ ...router.query, ...typeRef.current ,page:1} , // Replace with your query parameters
+=======
+            query: typeRef.current, // Replace with your query parameters
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
           });
         }
       }
@@ -169,7 +193,11 @@ function Index(props) {
         }else{
           router.push({
             pathname: router.pathname, // Replace with the desired page URL
+<<<<<<< HEAD
             query:{ ...router.query, ...typeRef.current ,page:1} , // Replace with your query parameters
+=======
+            query: typeRef.current, // Replace with your query parameters
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
           });
         }
       }
@@ -192,11 +220,19 @@ console.log("inputs",typeRef.current)
 
             </div>
             <div className='m-2 relative'>
+<<<<<<< HEAD
                        <Select  aria-label="Floor"  id="Floor" name="Floor"  placeholder={t.filter.rooms} options={floorOptions} onChange={handleFloor}/>
 
             </div>
             <div className='m-2 relative'>
                       <Select  aria-label="area"  id="area" name="area" placeholder={t.filter.area} options={areaOptions} onChange={handleArea}/>
+=======
+                       <Select  aria-label="rooms"  id="rooms" name="rooms"  placeholder={t.filter.rooms} options={options}/>
+
+            </div>
+            <div className='m-2 relative'>
+                      <Select  aria-label="area"  id="area" name="area" placeholder={t.filter.area} options={options}/>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
             </div>
      
         </div>

@@ -150,8 +150,14 @@ module.exports = (app,channel) => {
     })
     app.get("/posts",csurf({ cookie: true }), async(req,res,next)=>{
 
+<<<<<<< HEAD
         let min,max
         let min_area,max_area
+=======
+        const token = req;
+        console.log("token",token)
+        let min,max
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
         console.log( parseInt(req.query.page))
         const page = parseInt(req.query.page)||1 ;
         const limit = 10 ;
@@ -159,9 +165,15 @@ module.exports = (app,channel) => {
         const location = parseInt(req.query.location)||''
         const type = isNaN(req.query.type)?undefined:req.query.type.toString()
         const price = parseInt(req.query.price)||''
+<<<<<<< HEAD
         const area = String(req.query.area)||''
         const floor = isNaN( String(req.query.floor))?'': String(req.query.floor)
         console.log(req.query)
+=======
+        const rooms = parseInt(req.query.rooms)||''
+        const area = parseInt(req.query.area)||''
+        console.log("type:",type)
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
         if(price==1){
             min = 50000000;
             max= 100000000
@@ -172,6 +184,7 @@ module.exports = (app,channel) => {
             min = 150000000;
             
         }
+<<<<<<< HEAD
         if(area==1){
             min_area = 1;
             max_area= 50
@@ -220,6 +233,37 @@ module.exports = (app,channel) => {
             }
         })
         
+=======
+        console.log("price _",min , max)
+        try{
+            const post =await service.getAllPost({limit,offset,type,location,min,max,rooms,area});
+            const locations =await service.getLocations()
+            const count = await service.PostsCount({type,location,min,max,rooms,area})
+            console.log("count",count)
+            const totalPage = Math.ceil(+count /limit)
+            return res.json({
+                status:200,
+                data:post,
+                locations:locations,
+                'pagination':{
+                    "offset": offset,
+                    "count":count,
+                    'totalPage':totalPage,
+                    'next':{
+                        'page':page+1,
+                        'limit':limit
+                    },
+                    'previous':{
+                        'page':page-1,
+                        'limit':limit
+                    }
+
+
+
+                }
+            })
+
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
         }catch(error){next(error)}
 
     });

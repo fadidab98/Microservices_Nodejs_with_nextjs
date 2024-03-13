@@ -81,12 +81,20 @@ function index() {
     await loadFull(main);
 };
   return (
+<<<<<<< HEAD
     <section  className='pt-16 w-full max-h-screen relative'>
+=======
+    <section  className='pt-16 w-full min-h-screen relative'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
         <Particles
       id="tsparticles"
       init={particlesInit}
       options={particlesConfig}
+<<<<<<< HEAD
       className='!absolute z-10 top-0 left-0 w-full !h-screen'
+=======
+      className='absolute z-10 top-0 left-0 w-full h-full'
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
      />
       <AboutUs/>
      

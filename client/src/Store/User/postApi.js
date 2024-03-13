@@ -33,7 +33,11 @@ export const postApi = createApi({
   },
   endpoints: (builder) => ({
     getAllPosts: builder.query({
+<<<<<<< HEAD
       query: ({page,location,type,price,area,floor}) => ({ url: `/posts?page=${page}&location=${location}&type=${type}&price=${price}&area=${area}&floor=${floor}`, method: 'get' }),
+=======
+      query: ({page,location,type,price}) => ({ url: `/posts?page=${page}&location=${location}&type=${type}&price=${price}`, method: 'get' }),
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
      
 
     }),

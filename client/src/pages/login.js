@@ -70,7 +70,11 @@ function Index(props) {
       <Head>
       <meta name="csrf-token" content={props?.csrf} method="POST" />
       </Head>
+<<<<<<< HEAD
         <div className='w-full h-screen relative pt-16 z-10 text-green-900'>
+=======
+        <div className='w-full h-full relative pt-16 z-10 text-green-900'>
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
             <div className='absolute left-1/4 w-1/2  z-30   backdrop-blur-3xl bg-white/50 mt-20 mx-auto shadow-xl rounded-lg'>
             <h2 className='text-center mx-auto w-full text-xl mt-2'>Login</h2>
             <form onSubmit={handleSubmit}>

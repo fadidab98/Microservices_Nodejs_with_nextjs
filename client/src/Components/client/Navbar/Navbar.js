@@ -42,7 +42,11 @@ function Navbar() {
     <nav className='bg-gray-50 flex flex-row items-center justify-between h-16 px-5  opacity-90 fixed left-0 right-0 z-50	shadow-lg w-full'>
       <div className='p-0  m-0  flex items-center h-full w-36 text-lg'>
         <div className='w-full h-9 relative '>
+<<<<<<< HEAD
         <Image src={"https://res.cloudinary.com/demo/image/fetch/f_auto/https://res.cloudinary.com/dg2c3liap/image/upload/v1703829320/logo_lr20sf.png"}  width={200} height={100} priority layout="responsive" alt="Image Error"    /> 
+=======
+        <Image src={"https://res.cloudinary.com/demo/image/fetch/f_auto/https://res.cloudinary.com/dg2c3liap/image/upload/v1703829320/logo_lr20sf.png"}  width={200} height={100} priority layout="responsive" alt="Image Error"  loading="lazy"  /> 
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
 
         </div>
 

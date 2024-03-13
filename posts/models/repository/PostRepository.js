@@ -79,9 +79,15 @@ async getLocations(){
   return loc
 }
 
+<<<<<<< HEAD
 async getAllPosts({limit,offset,type,location,min,max,floor,min_area,max_area}){
   const whereCondition={}
   const whereConditionDetails={}
+=======
+async getAllPosts({limit,offset,type,location,min,max,rooms,area}){
+  const whereCondition={}
+  
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   if (location) {
     whereCondition.locationid = location;
   }
@@ -95,6 +101,7 @@ async getAllPosts({limit,offset,type,location,min,max,floor,min_area,max_area}){
   if(min && !max){
     whereCondition.price={[Op.gt]:[min]}
   }
+<<<<<<< HEAD
   if(floor){
     whereConditionDetails.floor= floor
   }
@@ -111,6 +118,11 @@ async getAllPosts({limit,offset,type,location,min,max,floor,min_area,max_area}){
   } */
   console.log("condition ",whereConditionDetails)
   const posts = await Post.findAll({where:whereCondition,include:[{model:Details,where:whereConditionDetails},{model:Location}],limit:limit,offset:offset})
+=======
+  console.log("condition ",whereCondition)
+  console.log("where ",whereCondition)
+  const posts = await Post.findAll({where:whereCondition,include:[{model:Details},{model:Location}],limit:limit,offset:offset})
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   return posts
 }
 async getAllDashPost(inputData){
@@ -130,9 +142,14 @@ async PostsDashCount(){
   const count = await Post.count();
   return count
 }
+<<<<<<< HEAD
 async PostsCount({type,location,min,max,floor,min_area,max_area}){
   const whereCondition={}
   const whereConditionDetails={}
+=======
+async PostsCount({type,location,min,max,rooms,area}){
+  const whereCondition={}
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   whereCondition.status =1
   if (location) {
     whereCondition.locationid = location;
@@ -147,11 +164,15 @@ async PostsCount({type,location,min,max,floor,min_area,max_area}){
   if(min && !max){
     whereCondition.price={[Op.gt]:[min]}
   }
+<<<<<<< HEAD
   if(floor){
     whereConditionDetails.floor = floor
   }
   console.log("whereConditionDetails : ",whereConditionDetails)
   const count = await Post.count({where:whereCondition,include:[{model:Details, where:whereConditionDetails},{model:Location}]});
+=======
+  const count = await Post.count({where:whereCondition,include:[{model:Details},{model:Location}]});
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   return count
 }
 async PostsCounts(){

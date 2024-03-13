@@ -15,11 +15,18 @@ export default function TopNavigation() {
   const [notnummber,setNotnummber]= useState(1)
 
   const {data:notification,refetch }= useGetNotQuery({notnummber,cook})
+<<<<<<< HEAD
  const socket = io('http://localhost:5000');
 
   useEffect(()=>{
     socket?.on("getNotification",(data)=>{
       setNot([data])
+=======
+  const socket =  useSelector(state=>state.setting.setting.socket)
+  useEffect(()=>{
+    socket?.on("getNotification",(data)=>{
+      setNot((prev)=>[...prev,data])
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
     })
 
 
@@ -34,7 +41,11 @@ export default function TopNavigation() {
     init();
   }, []);
 
+<<<<<<< HEAD
  console.log("not",not)
+=======
+ console.log(not)
+>>>>>>> 802321716b56db79acec7e66d8e6f9c17aac17eb
   const handleNot =()=>{
     setNotnummber(notnummber+1);
     console.log(notnummber)
